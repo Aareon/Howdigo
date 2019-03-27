@@ -24,11 +24,7 @@ CLIENT_SECRET = parser.get(r, 'ClientSecret')
 USERNAME= parser.get(r,'Username')
 USER_AGENT = parser.get(r, 'Useragent')
 
-# CLIENT_ID = "QLRAtXHUzbV4Xw"
-# PASSWORD = "Jw052796rt"
-# CLIENT_SECRET = "HllAPy3SokVnWlMq0Re28t6mu34"
-# USERNAME= "realjohnward"
-# USER_AGENT = "praw"
+
 REDDIT_HEADERS = {'submissions': ['author', 'clicked', 'comments', 'created_utc', 'distinguished', 'edited', 'id', 'is_self', 'link_flair_template_id',
                             'link_flair_text', 'locked', 'name', 'num_comments', 'over_18', 'permalink', 'score', 'selftext', 'spoiler', 'stickied', 'subreddit',
                             'title', 'upvote_ratio', 'url']}
