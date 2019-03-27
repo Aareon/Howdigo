@@ -10,8 +10,8 @@ if not os.path.exists(DATAPATH):
 # Read app.ini
 parser = ConfigParser()
 
-# parser.read('.\\report\\api.ini')
-parser.read('.\\report\\realjohnward\\api.ini')
+parser.read('.\\report\\api.ini')
+# parser.read('.\\report\\realjohnward\\api.ini')
 
 # reddit settings
 r = 'Reddit'
