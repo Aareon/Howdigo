@@ -1,8 +1,8 @@
 from .core import tk, ttk, messagebox, Queue, WELCOME_MSG, APIs
-from .core import RedditStreamer, GithubStreamer
-from .core import REDDIT_MODELS, GITHUB_MODELS, Report, GHReport, sys 
+from .core import RedditStreamer #GithubStreamer
+from .core import REDDIT_MODELS, Report, sys #, GITHUB_MODELS
 
-MODELS = {'reddit': REDDIT_MODELS, 'github': GITHUB_MODELS}
+MODELS = {'reddit': REDDIT_MODELS} #, 'github': GITHUB_MODELS}
 
 class Howdigo(tk.Tk):
     def __init__(self):
@@ -124,11 +124,11 @@ class MainMenu(tk.Frame):
 
             self.listbox.pack(side="top", fill='both')
 
-            keywordframe = tk.Frame(self.cframe)
-            keywordframe.pack(side="top", fill="both")
+            keywordframe = tk.Frame(answerframe)
+            keywordframe.pack(side="bottom", fill="both")
             self.entry = tk.Entry(keywordframe, width=20)
             self.entry.pack(side="right", padx=5, pady=5)
-            nameofprojlab = tk.Label(keywordframe, text="Name of Project: ")
+            nameofprojlab = tk.Label(keywordframe, text="Filter for Keyword (Name of Project): ")
             nameofprojlab.pack(side="left", padx=5, pady=5)
 
             if back:
@@ -260,14 +260,14 @@ class StreamFrame(tk.Frame):
                             return
                     except KeyError:
                         pass
-                    try:
-                        data = info['github-data']
-                        self.streaming = False
-                        print("call init_done_frame")
-                        self.master.init_done_frame(data=data, gh=True)
-                        return
-                    except KeyError:
-                        pass
+                    # try:
+                    #     data = info['github-data']
+                    #     self.streaming = False
+                    #     print("call init_done_frame")
+                    #     self.master.init_done_frame(data=data, gh=True)
+                    #     return
+                    # except KeyError:
+                    #     pass
                     try:
                         if info['update_wheel']:
                             self.update_wheel()
@@ -318,8 +318,8 @@ class DoneFrame(tk.Frame):
             savebtn = ttk.Button(topribbon, text="Save", command=self.report.file_save)
             # cancelbtn = ttk.Button(btmribbon, text="Cancel", command=popup.destroy)
             savebtn.pack(side="right", padx=5, pady=5)
-        else:
-            report = GHReport(self, self.app.models, data, name=self.master.cfg['step3']['project'])
+        # else:
+        #     report = GHReport(self, self.app.models, data, name=self.master.cfg['step3']['project'])
 
 
 class FrameDataTable(ttk.Treeview):
@@ -333,7 +333,7 @@ class FrameDataTable(ttk.Treeview):
         headers = ['id'] + headers
 
         super().__init__(master, *args, columns=headers, height=10, **kwargs)
-        # self['show'] = 'headings'
+        self['show'] = 'headings'
 
         self.vsb = ttk.Scrollbar(self, orient="vertical", command=self.yview)
         self.vsb.pack(side='right', fill='y')

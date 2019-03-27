@@ -1,4 +1,4 @@
-from .core import Process, RedditStreamer, GithubStreamer, time
+from .core import Process, RedditStreamer, time   #,GithubStreamer
 
 class BackgroundWorker(Process):
     def __init__(self, from_main_q, to_main_q):
@@ -20,9 +20,9 @@ class BackgroundWorker(Process):
                 if info['api'] == 'reddit':
                     self.streamer = RedditStreamer(self.from_main_q, self.to_main_q, mode=info['mode'], data=info['data'], project=info['project'])
                     self.streamer.stream_data()
-                elif info['api'] == 'github':
-                    self.streamer = GithubStreamer(self.from_main_q, self.to_main_q, mode=info['mode'], data=info['data'], project=info['project'])
-                    self.streamer.stream_data()
+                # elif info['api'] == 'github':
+                    # self.streamer = GithubStreamer(self.from_main_q, self.to_main_q, mode=info['mode'], data=info['data'], project=info['project'])
+                    # self.streamer.stream_data()
                 else:
                     self.to_main_q.put({'error': 'No streamer object exists for the api "{}"'.format(info['api'])})
 

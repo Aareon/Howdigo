@@ -10,11 +10,8 @@ if not os.path.exists(DATAPATH):
 # Read app.ini
 parser = ConfigParser()
 
-try:
-    parser.read('.\\report\\api.ini')
-    _ = parser.get('Reddit', 'ClientID')
-except:
-    parser.read('.\\report\\realjohnward\\api.ini')
+# parser.read('.\\report\\api.ini')
+parser.read('.\\report\\realjohnward\\api.ini')
 
 # reddit settings
 r = 'Reddit'
@@ -36,6 +33,6 @@ GITHUB_HEADERS = {'repository': ['unique_views', 'total_views', 'unique_clones',
 
 
 # github settings
-gbcfg = parser['Github']
-GB_USERNAME = gbcfg['Username']
-GB_PASSWORD = gbcfg['Password']
+gh = 'Github'
+GB_USERNAME = parser.get(gh, 'Username')
+GB_PASSWORD = parser.get(gh, 'Password')

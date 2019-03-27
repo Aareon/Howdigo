@@ -5,12 +5,10 @@ import time
 # gui stuff
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
-# for displaying data in reports
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from matplotlib.figure import Figure
 import tkinter as tk
+# for displaying data in reports
 import pandas as pd
+import matplotlib.pyplot as plt 
 import numpy as np
 # stream data to csv file
 import csv
@@ -37,6 +35,6 @@ from threading import Thread
 from multiprocessing import Process, Queue, freeze_support
 
 from .reddit_api import *
-from .github_api import *
+# from .github_api import *
 from .streamer import BackgroundWorker
 from .gui import Howdigo
